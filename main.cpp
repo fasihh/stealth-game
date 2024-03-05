@@ -3,11 +3,16 @@
 #include <string>
 #include "src/headers/player.hpp"
 #include "src/headers/enemy.hpp"
+#include "src/headers/object.hpp"
 
 sf::RenderWindow window(sf::VideoMode(800, 600), "SFML", sf::Style::Default, sf::ContextSettings(0, 0, 8));
 
 int main() {
     window.setFramerateLimit(60);
+
+    Object wall(sf::Vector2f{ 100.f, 60.f });
+    wall.setColor(sf::Color::Red);
+    wall.setPosition({ 300.f, 400.f });
 
     Player player(
         20.f,
@@ -48,9 +53,12 @@ int main() {
 
         window.clear();
 
+        player.update(wall);
+        enemy.update(wall);
+        
         enemy.draw(window);
         player.draw(window);
-        
+        wall.draw(window);
         window.draw(vx);
         window.draw(vy);
 

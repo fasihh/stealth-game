@@ -11,6 +11,7 @@ protected:
 private:
     Detection detection;
     Player *target;
+    sf::FloatRect nextPosition;
 
     void movement();
 public:
