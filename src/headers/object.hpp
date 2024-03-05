@@ -1,5 +1,4 @@
 #include <SFML/Graphics.hpp>
-#include "objectType.hpp"
 #pragma once
 
 class Object {
