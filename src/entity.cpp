@@ -1,9 +1,9 @@
 #include <SFML/Graphics.hpp>
 #include "headers/entity.hpp"
 
-void Entity::setVelocity(sf::Vector2f velocity) { this->velocity = velocity; }
-void Entity::setPosition(sf::Vector2f position) { entity.setPosition(position); }
-void Entity::setRadius(float radius) { entity.setRadius(radius); }
+void Entity::setVelocity(const sf::Vector2f velocity) { this->velocity = velocity; }
+void Entity::setPosition(const sf::Vector2f position) { entity.setPosition(position); }
+void Entity::setRadius(const float radius) { entity.setRadius(radius); }
 
 sf::FloatRect Entity::getBounds() const { return entity.getGlobalBounds(); }
 sf::Vector2f Entity::getVelocity() const { return velocity; }

@@ -1,5 +1,5 @@
-files.cpp := main.cpp src/player.cpp src/game.cpp src/entity.cpp src/enemy.cpp
-files.o := main.o player.o game.o entity.o enemy.o
+files.cpp := main.cpp src/player.cpp src/game.cpp src/entity.cpp src/enemy.cpp src/detection.cpp
+files.o := main.o player.o game.o entity.o enemy.o detection.o
 
 all: compile link
 

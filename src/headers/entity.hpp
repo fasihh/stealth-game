@@ -6,9 +6,9 @@ protected:
     sf::CircleShape entity;
     sf::Vector2f velocity;
 public:
-    void setVelocity(sf::Vector2f);
-    void setPosition(sf::Vector2f);
-    void setRadius(float);
+    void setVelocity(const sf::Vector2f);
+    void setPosition(const sf::Vector2f);
+    void setRadius(const float);
 
     sf::FloatRect getBounds() const;
     sf::Vector2f getVelocity() const;
