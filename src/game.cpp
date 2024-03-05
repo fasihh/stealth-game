@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "game.hpp"
+#include "headers/game.hpp"
 
 float Game::frictionFactor = 0.85f;
 float Game::globalEntitySpeed = 4.0f;

@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "entity.hpp"
+#include "headers/entity.hpp"
 
 void Entity::setVelocity(sf::Vector2f velocity) { this->velocity = velocity; }
 void Entity::setPosition(sf::Vector2f position) { entity.setPosition(position); }

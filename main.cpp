@@ -1,8 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
-#include "player.hpp"
-#include "enemy.hpp"
+#include "src/headers/player.hpp"
+#include "src/headers/enemy.hpp"
 
 sf::RenderWindow window(sf::VideoMode(800, 600), "SFML", sf::Style::Default, sf::ContextSettings(0, 0, 8));
 

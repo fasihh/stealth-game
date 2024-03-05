@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
-#include "player.hpp"
-#include "game.hpp"
+#include "headers/player.hpp"
+#include "headers/game.hpp"
 
 void Player::movement() {
     if ((velocity.x > -0.1f && velocity.x < 0.f))

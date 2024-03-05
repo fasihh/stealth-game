@@ -1,5 +1,4 @@
-path := "C:\Users\FASIH PC\Desktop\code\practice sfml\stealth\src
-files.cpp := main.cpp player.cpp game.cpp entity.cpp enemy.cpp
+files.cpp := main.cpp src/player.cpp src/game.cpp src/entity.cpp src/enemy.cpp
 files.o := main.o player.o game.o entity.o enemy.o
 
 all: compile link

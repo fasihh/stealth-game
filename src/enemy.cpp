@@ -1,8 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "game.hpp"
-#include "enemy.hpp"
-#include "player.hpp"
+#include "headers/game.hpp"
+#include "headers/enemy.hpp"
+#include "headers/player.hpp"
 
 void Enemy::movement() {
 
