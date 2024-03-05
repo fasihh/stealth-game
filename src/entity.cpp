@@ -9,3 +9,7 @@ sf::FloatRect Entity::getBounds() const { return entity.getGlobalBounds(); }
 sf::Vector2f Entity::getVelocity() const { return velocity; }
 sf::Vector2f Entity::getPosition() const { return entity.getPosition(); }
 float Entity::getRadius() const { return entity.getRadius(); }
+
+void Entity::draw(sf::RenderWindow& window) {
+    window.draw(entity);
+}
