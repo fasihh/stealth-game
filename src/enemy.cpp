@@ -87,6 +87,7 @@ void Enemy::update(Object object) {
         if (!entity.getGlobalBounds().intersects(target->getBounds()))
             velocity = direction * Game::globalEntitySpeed * 0.6f;
     }
+    this->resolveBorderCollision();
     this->resolveObjectCollision(object);
     entity.setPosition(entity.getPosition() + velocity);
 }

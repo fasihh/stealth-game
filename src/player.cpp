@@ -111,6 +111,7 @@ void Player::update(Object object) {
     velocity.x *= Game::frictionFactor, velocity.y *= Game::frictionFactor;
 
     this->movement();
+    this->resolveBorderCollision();
     this->resolveObjectCollision(object);
     entity.setPosition(entity.getPosition() + velocity);
 }
