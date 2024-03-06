@@ -35,9 +35,6 @@ int main() {
     sf::Text vx("vx: ", font, 25), vy("vy: ", font, 25);
     vy.setPosition(sf::Vector2f{ 5.f, 2.f });
     vx.setPosition(sf::Vector2f{ 5.f, 30.f });
-
-    int keyTime = 6;
-    const float frictionFactor = 0.9f;
     
     while (window.isOpen()) {
         sf::Event event;
