@@ -1,4 +1,5 @@
 #include "headers/detection.hpp"
+#include "headers/game.hpp"
 
 Detection::Detection(
     float radius,
@@ -17,6 +18,6 @@ bool Detection::intersects(sf::FloatRect target) {
     return detection.getGlobalBounds().intersects(target);
 }
 
-void Detection::draw(sf::RenderWindow& window) {
-    window.draw(detection);
+void Detection::draw() {
+    Game::window.draw(detection);
 }

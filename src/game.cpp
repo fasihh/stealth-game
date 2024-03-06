@@ -17,6 +17,8 @@ float q_rsqrt(float number) {
 float Game::frictionFactor = 0.85f;
 float Game::globalEntitySpeed = 4.0f;
 
+sf::RenderWindow Game::window(sf::VideoMode(800, 600), "SFML", sf::Style::Default, sf::ContextSettings(0, 0, 8));
+
 sf::Vector2f Game::normalize(sf::Vector2f vect) {
     float invMag = q_rsqrt(vect.x*vect.x + vect.y*vect.y);
     

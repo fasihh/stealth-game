@@ -18,6 +18,7 @@ public:
     sf::Vector2f getPosition() const;
     float getRadius() const;
 
+    void resolveBorderCollision();
     virtual void update(Object) = 0;
-    virtual void draw(sf::RenderWindow&) = 0;
+    virtual void draw() = 0;
 };

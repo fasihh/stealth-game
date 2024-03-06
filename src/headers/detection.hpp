@@ -15,5 +15,5 @@ public:
 
     bool intersects(sf::FloatRect);
 
-    void draw(sf::RenderWindow&);
+    void draw();
 };

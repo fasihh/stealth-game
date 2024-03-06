@@ -1,14 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
+#include "src/headers/game.hpp"
 #include "src/headers/player.hpp"
 #include "src/headers/enemy.hpp"
 #include "src/headers/object.hpp"
 
-sf::RenderWindow window(sf::VideoMode(800, 600), "SFML", sf::Style::Default, sf::ContextSettings(0, 0, 8));
-
 int main() {
-    window.setFramerateLimit(60);
+    Game::window.setFramerateLimit(60);
 
     Object wall(sf::Vector2f{ 100.f, 60.f });
     wall.setColor(sf::Color::Red);
@@ -36,30 +35,30 @@ int main() {
     vy.setPosition(sf::Vector2f{ 5.f, 2.f });
     vx.setPosition(sf::Vector2f{ 5.f, 30.f });
     
-    while (window.isOpen()) {
+    while (Game::window.isOpen()) {
         sf::Event event;
 
-        while (window.pollEvent(event)) {
+        while (Game::window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
-                window.close();
+                Game::window.close();
         }
 
         float velx = player.getVelocity().x, vely = player.getVelocity().y;
         vx.setString("vx: " + std::to_string(velx).substr(0, velx < 0 ? 4 : 3));
         vy.setString("vy: " + std::to_string(vely).substr(0, vely < 0 ? 4 : 3));
 
-        window.clear();
+        Game::window.clear();
 
         player.update(wall);
         enemy.update(wall);
         
-        enemy.draw(window);
-        player.draw(window);
-        wall.draw(window);
-        window.draw(vx);
-        window.draw(vy);
+        enemy.draw();
+        player.draw();
+        wall.draw();
+        Game::window.draw(vx);
+        Game::window.draw(vy);
 
-        window.display();
+        Game::window.display();
     }
 
     return 0;
