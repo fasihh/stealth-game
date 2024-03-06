@@ -19,5 +19,5 @@ public:
     float getRadius() const;
 
     virtual void update(Object) = 0;
-    virtual void draw(sf::RenderWindow&) = 0;
+    virtual void draw() = 0;
 };

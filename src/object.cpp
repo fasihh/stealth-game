@@ -1,5 +1,6 @@
 #include <iostream>
 #include "headers/object.hpp"
+#include "headers/game.hpp"
 
 Object::Object(sf::Vector2f size) : object(size) {}
 
@@ -9,6 +10,6 @@ void Object::setPosition(const sf::Vector2f position) { object.setPosition(posit
 
 sf::FloatRect Object::getBounds() const { return object.getGlobalBounds(); }
 
-void Object::draw(sf::RenderWindow& window) {
-    window.draw(object);
+void Object::draw() {
+    Game::window.draw(object);
 }

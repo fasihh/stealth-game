@@ -20,5 +20,5 @@ public:
     void setTarget(Player *);
     
     void update(Object);
-    void draw(sf::RenderWindow&);
+    void draw();
 };

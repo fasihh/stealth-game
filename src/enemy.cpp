@@ -91,7 +91,7 @@ void Enemy::update(Object object) {
     entity.setPosition(entity.getPosition() + velocity);
 }
 
-void Enemy::draw(sf::RenderWindow& window) {
-    detection.draw(window);
-    window.draw(entity);
+void Enemy::draw() {
+    detection.draw();
+    Game::window.draw(entity);
 }

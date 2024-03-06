@@ -5,6 +5,7 @@ class Game {
 public:
     static float frictionFactor;
     static float globalEntitySpeed;
+    static sf::RenderWindow window;
 
     static sf::Vector2f normalize(sf::Vector2f);
 };

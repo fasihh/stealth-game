@@ -115,6 +115,6 @@ void Player::update(Object object) {
     entity.setPosition(entity.getPosition() + velocity);
 }
 
-void Player::draw(sf::RenderWindow& window) {
-    window.draw(entity);
+void Player::draw() {
+    Game::window.draw(entity);
 }

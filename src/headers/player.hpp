@@ -13,5 +13,5 @@ public:
     Player(float, sf::Color);
 
     void update(Object);
-    void draw(sf::RenderWindow&);
+    void draw();
 };
