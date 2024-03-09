@@ -20,5 +20,14 @@ public:
     void setPosition(const sf::Vector2f);
     void setPosition(const float, const float);
 
-    void setColor(const sf::Color);
+    void setSize(const sf::Vector2f);
+    void setSize(const float, const float);
+
+    const sf::Vector2f getPosition() const;
+
+    const sf::Vector2f getSize() const;
+
+    sf::FloatRect getGlobalBounds();
+
+    void setFillColor(const sf::Color);
 };

@@ -28,7 +28,7 @@ void Object::initVertices() {
 }
 
 void Object::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-    target.draw(vertices, 5, sf::LinesStrip, states);
+    target.draw(vertices, 5, sf::TriangleFan, states);
 }
 
 void Object::setPosition(const sf::Vector2f position) {
@@ -40,7 +40,35 @@ void Object::setPosition(const float x, const float y) {
     this->translatePosition();
 }
 
-void Object::setColor(const sf::Color color) {
+void Object::setSize(const sf::Vector2f size) {
+    this->size = position;
+    this->translatePosition();
+}
+void Object::setSize(const float x, const float y) {
+    size.x = x, size.y = y;
+    this->translatePosition();
+}
+
+void Object::setFillColor(const sf::Color color) {
     this->color = color;
     this->setAllVertexColor();
+}
+
+const sf::Vector2f Object::getPosition() const {
+    return position;
+}
+
+const sf::Vector2f Object::getSize() const {
+    return size;
+}
+
+sf::FloatRect Object::getGlobalBounds() {
+    sf::FloatRect bounds;
+
+    bounds.left = position.x;
+    bounds.top = position.y;
+    bounds.width = size.x;
+    bounds.height = size.y;
+
+    return bounds;
 }

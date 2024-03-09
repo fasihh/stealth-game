@@ -11,8 +11,8 @@ int main() {
     window.setFramerateLimit(60);
 
     Object object(200.f, 200.f);
-    object.setPosition(200.f, 200.f);
-    object.setColor(sf::Color::Red);
+    object.setPosition(window.getSize().x/2 - object.getSize().x, window.getSize().y/2 - object.getSize().y);
+    object.setFillColor(sf::Color::Red);
 
     Player player(
         20.f,
