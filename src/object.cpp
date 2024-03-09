@@ -25,12 +25,32 @@ void Object::setAllVertexColor() {
 void Object::initVertices() {
     this->translatePosition();
     this->setAllVertexColor();
+    vertices[4].position = position;
+}
+
+void Object::setAllVertexColor() {
+    for (int i = 0; i < 5; i++) {
+        vertices[i].color = color;
+    }
+}
+
+void Object::initVertices() {
+    this->translatePosition();
+    this->setAllVertexColor();
 }
 
 void Object::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(vertices, 5, sf::TriangleFan, states);
 }
 
+void Object::setPosition(const sf::Vector2f position) {
+    this->position = position;
+    this->translatePosition();
+}
+void Object::setPosition(const float x, const float y) {
+    position.x = x, position.y = y;
+    this->translatePosition();
+}
 void Object::setPosition(const sf::Vector2f position) {
     this->position = position;
     this->translatePosition();
