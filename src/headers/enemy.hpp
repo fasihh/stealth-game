@@ -7,7 +7,7 @@
 
 class Enemy : public Entity {
 protected:
-    void resolveObjectCollision(Object);
+    void resolveObjectCollision(std::vector<Object>);
 private:
     Detection detection;
     Player *target;
@@ -19,6 +19,6 @@ public:
 
     void setTarget(Player *);
     
-    void update(Object);
+    void update(std::vector<Object>);
     void draw(sf::RenderWindow&);
 };

@@ -19,7 +19,7 @@ Enemy::Enemy(
 
 void Enemy::setTarget(Player *target) { this->target = target; }
 
-void Enemy::update(Object object) {
+void Enemy::update(std::vector<Object> object) {
     velocity.x *= Game::frictionFactor, velocity.y *= Game::frictionFactor;
 
     float detectionRadius = detection.getRadius(), radius = entity.getRadius();
@@ -37,57 +37,59 @@ void Enemy::update(Object object) {
     entity.setPosition(entity.getPosition() + velocity);
 }
 
-void Enemy::resolveObjectCollision(Object object) {
-    sf::FloatRect enemyBounds = entity.getGlobalBounds();
-    sf::FloatRect objectBounds = object.getGlobalBounds();
+void Enemy::resolveObjectCollision(std::vector<Object> objects) {
+    for (Object object : objects) {
+        sf::FloatRect enemyBounds = entity.getGlobalBounds();
+        sf::FloatRect objectBounds = object.getGlobalBounds();
 
-    nextPosition = enemyBounds;
-    nextPosition.left += velocity.x;
-    nextPosition.top += velocity.y;
+        nextPosition = enemyBounds;
+        nextPosition.left += velocity.x;
+        nextPosition.top += velocity.y;
 
-    if (!objectBounds.intersects(nextPosition)) return;
+        if (!objectBounds.intersects(nextPosition)) return;
 
-    sf::Vector2f entityPos = entity.getPosition();
+        sf::Vector2f entityPos = entity.getPosition();
 
-    // left collision
-    if (
-        enemyBounds.left < objectBounds.left &&
-        enemyBounds.left + enemyBounds.width < objectBounds.left + objectBounds.width &&
-        enemyBounds.top < objectBounds.top + objectBounds.height &&
-        objectBounds.top < enemyBounds.height + enemyBounds.top
-    ) {
-        velocity.x = 0.f;
-        entity.setPosition(objectBounds.left - enemyBounds.width, enemyBounds.top);
-    }
-    // right collision
-    else if (
-        enemyBounds.left > objectBounds.left &&
-        enemyBounds.left + enemyBounds.width > objectBounds.left + objectBounds.width &&
-        enemyBounds.top < objectBounds.top + objectBounds.height &&
-        objectBounds.top < enemyBounds.height + enemyBounds.top
-    ) {
-        velocity.x = 0.f;
-        entity.setPosition(objectBounds.left + objectBounds.width, enemyBounds.top);
-    }
-    // top collision
-    else if (
-        enemyBounds.top > objectBounds.top &&
-        enemyBounds.top + enemyBounds.height > objectBounds.top + objectBounds.height &&
-        enemyBounds.left < objectBounds.left + objectBounds.width &&
-        objectBounds.left < enemyBounds.width + enemyBounds.left
-    ) {
-        velocity.y = 0.f;
-        entity.setPosition(enemyBounds.left, objectBounds.top + objectBounds.height);
-    }
-    // bottom collision
-    else if (
-        enemyBounds.top < objectBounds.top &&
-        enemyBounds.top + enemyBounds.height < objectBounds.top + objectBounds.height &&
-        enemyBounds.left < objectBounds.left + objectBounds.width &&
-        objectBounds.left < enemyBounds.width + enemyBounds.left
-    ) {
-        velocity.y = 0.f;
-        entity.setPosition(enemyBounds.left, objectBounds.top - enemyBounds.height);
+        // left collision
+        if (
+            enemyBounds.left < objectBounds.left &&
+            enemyBounds.left + enemyBounds.width < objectBounds.left + objectBounds.width &&
+            enemyBounds.top < objectBounds.top + objectBounds.height &&
+            objectBounds.top < enemyBounds.height + enemyBounds.top
+        ) {
+            velocity.x = 0.f;
+            entity.setPosition(objectBounds.left - enemyBounds.width, enemyBounds.top);
+        }
+        // right collision
+        else if (
+            enemyBounds.left > objectBounds.left &&
+            enemyBounds.left + enemyBounds.width > objectBounds.left + objectBounds.width &&
+            enemyBounds.top < objectBounds.top + objectBounds.height &&
+            objectBounds.top < enemyBounds.height + enemyBounds.top
+        ) {
+            velocity.x = 0.f;
+            entity.setPosition(objectBounds.left + objectBounds.width, enemyBounds.top);
+        }
+        // top collision
+        else if (
+            enemyBounds.top > objectBounds.top &&
+            enemyBounds.top + enemyBounds.height > objectBounds.top + objectBounds.height &&
+            enemyBounds.left < objectBounds.left + objectBounds.width &&
+            objectBounds.left < enemyBounds.width + enemyBounds.left
+        ) {
+            velocity.y = 0.f;
+            entity.setPosition(enemyBounds.left, objectBounds.top + objectBounds.height);
+        }
+        // bottom collision
+        else if (
+            enemyBounds.top < objectBounds.top &&
+            enemyBounds.top + enemyBounds.height < objectBounds.top + objectBounds.height &&
+            enemyBounds.left < objectBounds.left + objectBounds.width &&
+            objectBounds.left < enemyBounds.width + enemyBounds.left
+        ) {
+            velocity.y = 0.f;
+            entity.setPosition(enemyBounds.left, objectBounds.top - enemyBounds.height);
+        }
     }
 }
 
