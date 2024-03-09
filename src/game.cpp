@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "headers/game.hpp"
+#include "headers/object.hpp"
 
 float q_rsqrt(float number) {
     if (!number) return 1.f;
@@ -16,9 +17,18 @@ float q_rsqrt(float number) {
 
 float Game::frictionFactor = 0.85f;
 float Game::globalEntitySpeed = 4.0f;
+sf::RenderWindow *Game::window = nullptr;
+std::vector<Object> Game::objects{};
 
 sf::Vector2f Game::normalize(sf::Vector2f vect) {
     float invMag = q_rsqrt(vect.x*vect.x + vect.y*vect.y);
     
     return sf::Vector2f{ vect.x*invMag, vect.y*invMag };
+}
+
+void Game::setWindowInstance(sf::RenderWindow& window) {
+    if (Game::window != nullptr)
+        return;
+
+    Game::window = &window;
 }

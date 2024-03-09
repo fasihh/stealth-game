@@ -5,13 +5,13 @@
 
 class Player : public Entity {
 protected:
-    void resolveObjectCollision(std::vector<Object>);
+    void resolveObjectCollision();
 private:
     sf::FloatRect nextPosition;
     void movement();
 public:
     Player(float, sf::Color);
 
-    void update(std::vector<Object>);
+    void update();
     void draw(sf::RenderWindow&);
 };

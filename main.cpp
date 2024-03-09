@@ -4,19 +4,20 @@
 #include "src/headers/player.hpp"
 #include "src/headers/enemy.hpp"
 #include "src/headers/object.hpp"
+#include "src/headers/game.hpp"
 
 sf::RenderWindow window(sf::VideoMode(800, 600), "SFML", sf::Style::Default, sf::ContextSettings(0, 0, 8));
 
+
 int main() {
     window.setFramerateLimit(60);
-
-    std::vector<Object> objects;
+    Game::setWindowInstance(window);
 
     Object object(200.f, 200.f);
     object.setPosition(window.getSize().x/2 - object.getSize().x/2, window.getSize().y/2 - object.getSize().y/2);
     object.setFillColor(sf::Color::Red);
 
-    objects.push_back(object);
+    Game::objects.push_back(object);
 
     Player player(
         20.f,
@@ -57,15 +58,15 @@ int main() {
 
         window.clear();
 
-        player.update(objects);
-        enemy.update(objects);
+        player.update();
+        enemy.update();
         
         enemy.draw(window);
         player.draw(window);
         window.draw(vx);
         window.draw(vy);
 
-        for (Object object : objects)
+        for (Object object : Game::objects)
             window.draw(object);
 
         window.display();

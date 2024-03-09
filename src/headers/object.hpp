@@ -22,10 +22,12 @@ public:
 
     void setSize(const sf::Vector2f);
     void setSize(const float, const float);
-
+    
     const sf::Vector2f getPosition() const;
 
     const sf::Vector2f getSize() const;
+
+    std::vector<sf::Vertex> getAllVertices();
 
     sf::FloatRect getGlobalBounds();
 

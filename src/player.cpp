@@ -53,16 +53,16 @@ Player::Player(
     entity.setFillColor(color);
 }
 
-void Player::update(std::vector<Object> objects) {
+void Player::update() {
     velocity.x *= Game::frictionFactor, velocity.y *= Game::frictionFactor;
 
     this->movement();
-    this->resolveObjectCollision(objects);
+    this->resolveObjectCollision();
     entity.setPosition(entity.getPosition() + velocity);
 }
 
-void Player::resolveObjectCollision(std::vector<Object> objects) {
-    for (Object object : objects) {
+void Player::resolveObjectCollision() {
+    for (Object object : Game::objects) {
         sf::FloatRect playerBounds = entity.getGlobalBounds();
         sf::FloatRect objectBounds = object.getGlobalBounds();
 

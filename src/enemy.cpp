@@ -4,8 +4,6 @@
 #include "headers/player.hpp"
 #include "headers/object.hpp"
 
-void Enemy::movement() { /* TODO */ }
-
 Enemy::Enemy(
     float radius = 0.f,
     sf::Color color = sf::Color::Red,
@@ -15,11 +13,18 @@ Enemy::Enemy(
     velocity = sf::Vector2f(0.f, 0.f);
     entity.setRadius(radius);
     entity.setFillColor(color);
+
+    sf::Vector2f windowSize = static_cast<sf::Vector2f>(Game::window->getSize());
+    lightShader.loadFromFile("resources/light.vert", "resources/light.frag");
+    lightShader.setUniform("u_resolution", windowSize);
+
+    lightTexture.create(Game::window->getSize().x, Game::window->getSize().y);
+    lightTexture.setSmooth(true);
 }
 
 void Enemy::setTarget(Player *target) { this->target = target; }
 
-void Enemy::update(std::vector<Object> object) {
+void Enemy::update() {
     velocity.x *= Game::frictionFactor, velocity.y *= Game::frictionFactor;
 
     float detectionRadius = detection.getRadius(), radius = entity.getRadius();
@@ -33,12 +38,12 @@ void Enemy::update(std::vector<Object> object) {
         if (!entity.getGlobalBounds().intersects(target->getBounds()))
             velocity = direction * Game::globalEntitySpeed * 0.6f;
     }
-    this->resolveObjectCollision(object);
+    this->resolveObjectCollision();
     entity.setPosition(entity.getPosition() + velocity);
 }
 
-void Enemy::resolveObjectCollision(std::vector<Object> objects) {
-    for (Object object : objects) {
+void Enemy::resolveObjectCollision() {
+    for (Object object : Game::objects) {
         sf::FloatRect enemyBounds = entity.getGlobalBounds();
         sf::FloatRect objectBounds = object.getGlobalBounds();
 

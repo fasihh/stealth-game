@@ -7,18 +7,18 @@
 
 class Enemy : public Entity {
 protected:
-    void resolveObjectCollision(std::vector<Object>);
+    void resolveObjectCollision();
 private:
     Detection detection;
     Player *target;
     sf::FloatRect nextPosition;
-
-    void movement();
+    sf::Shader lightShader;
+    sf::RenderTexture lightTexture;
 public:
     Enemy(float, sf::Color, float, sf::Color);
 
     void setTarget(Player *);
     
-    void update(std::vector<Object>);
+    void update();
     void draw(sf::RenderWindow&);
 };

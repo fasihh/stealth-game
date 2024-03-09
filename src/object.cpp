@@ -61,6 +61,13 @@ const sf::Vector2f Object::getSize() const {
     return size;
 }
 
+std::vector<sf::Vertex> Object::getAllVertices() {
+    std::vector<sf::Vertex> vect_vertices;
+    for (int i = 0; i < 4; i++)
+        vect_vertices.push_back(this->vertices[i]);
+    return vect_vertices;
+}
+
 sf::FloatRect Object::getGlobalBounds() {
     sf::FloatRect bounds;
 
