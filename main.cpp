@@ -11,14 +11,14 @@ int main() {
     window.setFramerateLimit(60);
 
     Object object(200.f, 200.f);
-    object.setPosition(window.getSize().x/2 - object.getSize().x, window.getSize().y/2 - object.getSize().y);
+    object.setPosition(window.getSize().x/2 - object.getSize().x/2, window.getSize().y/2 - object.getSize().y/2);
     object.setFillColor(sf::Color::Red);
 
     Player player(
         20.f,
         sf::Color::Green
     );
-    player.setPosition({ 400 - player.getRadius(), 300 - player.getRadius() });
+    player.setPosition({ 700, 500 });
 
     Enemy enemy(
         20.f,
@@ -53,8 +53,8 @@ int main() {
 
         window.clear();
 
-        player.update();
-        enemy.update();
+        player.update(object);
+        enemy.update(object);
         
         enemy.draw(window);
         player.draw(window);
