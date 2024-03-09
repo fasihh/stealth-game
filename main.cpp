@@ -10,10 +10,9 @@ sf::RenderWindow window(sf::VideoMode(800, 600), "SFML", sf::Style::Default, sf:
 int main() {
     window.setFramerateLimit(60);
 
-    Object wall(sf::Vector2f{ 100.f, 60.f });
-    wall.setColor(sf::Color::Red);
-    wall.setPosition({ 300.f, 400.f });
-
+    Object object(20.f, 20.f);
+    object.setPosition(200.f, 200.f);
+    
     Player player(
         20.f,
         sf::Color::Green
@@ -53,14 +52,14 @@ int main() {
 
         window.clear();
 
-        player.update(wall);
-        enemy.update(wall);
+        player.update();
+        enemy.update();
         
         enemy.draw(window);
         player.draw(window);
-        wall.draw(window);
         window.draw(vx);
         window.draw(vy);
+        window.draw(object);
 
         window.display();
     }

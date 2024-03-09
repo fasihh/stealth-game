@@ -6,7 +6,7 @@ float q_rsqrt(float number) {
 
     float x2 = number * 0.5F;
     float y = number;
-    long i = *(long *) &y;
+    long i = *(long *)&y;
     i = 0x5f3759df - ( i >> 1 );
     y = *(float *) &i;
     y *= ( 1.5f - ( x2 * y * y ) );

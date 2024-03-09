@@ -53,65 +53,10 @@ Player::Player(
     entity.setFillColor(color);
 }
 
-void Player::resolveObjectCollision(Object object) {
-    sf::FloatRect playerBounds = entity.getGlobalBounds();
-    sf::FloatRect objectBounds = object.getBounds();
-
-    nextPosition = playerBounds;
-    nextPosition.left += velocity.x;
-    nextPosition.top += velocity.y;
-
-    if (!objectBounds.intersects(nextPosition)) return;
-
-    sf::Vector2f entityPos = entity.getPosition();
-
-    // left collision
-    if (
-        playerBounds.left < objectBounds.left &&
-        playerBounds.left + playerBounds.width < objectBounds.left + objectBounds.width &&
-        playerBounds.top < objectBounds.top + objectBounds.height &&
-        objectBounds.top < playerBounds.height + playerBounds.top
-    ) {
-        velocity.x = 0.f;
-        entity.setPosition(objectBounds.left - playerBounds.width, playerBounds.top);
-    }
-    // right collision
-    else if (
-        playerBounds.left > objectBounds.left &&
-        playerBounds.left + playerBounds.width > objectBounds.left + objectBounds.width &&
-        playerBounds.top < objectBounds.top + objectBounds.height &&
-        objectBounds.top < playerBounds.height + playerBounds.top
-    ) {
-        velocity.x = 0.f;
-        entity.setPosition(objectBounds.left + objectBounds.width, playerBounds.top);
-    }
-    // top collision
-    else if (
-        playerBounds.top > objectBounds.top &&
-        playerBounds.top + playerBounds.height > objectBounds.top + objectBounds.height &&
-        playerBounds.left < objectBounds.left + objectBounds.width &&
-        objectBounds.left < playerBounds.width + playerBounds.left
-    ) {
-        velocity.y = 0.f;
-        entity.setPosition(playerBounds.left, objectBounds.top + objectBounds.height);
-    }
-    // bottom collision
-    else if (
-        playerBounds.top < objectBounds.top &&
-        playerBounds.top + playerBounds.height < objectBounds.top + objectBounds.height &&
-        playerBounds.left < objectBounds.left + objectBounds.width &&
-        objectBounds.left < playerBounds.width + playerBounds.left
-    ) {
-        velocity.y = 0.f;
-        entity.setPosition(playerBounds.left, objectBounds.top - playerBounds.height);
-    }
-}
-
-void Player::update(Object object) {
+void Player::update() {
     velocity.x *= Game::frictionFactor, velocity.y *= Game::frictionFactor;
 
     this->movement();
-    this->resolveObjectCollision(object);
     entity.setPosition(entity.getPosition() + velocity);
 }
 
