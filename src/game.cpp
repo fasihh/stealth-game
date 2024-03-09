@@ -32,3 +32,14 @@ void Game::setWindowInstance(sf::RenderWindow& window) {
 
     Game::window = &window;
 }
+
+vertexVector Game::getAllUniquePoints() {
+    vertexVector uniquePoints;
+    for (Object object : objects) {
+        vertexVector objectVertices = object.getAllVertices();
+        for (sf::Vertex vertex : objectVertices)
+            uniquePoints.push_back(vertex);
+    }
+
+    return uniquePoints;
+}

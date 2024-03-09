@@ -1,6 +1,6 @@
+#pragma once
 #include <SFML/Graphics.hpp>
 #include "object.hpp"
-#pragma once
 
 class Entity {
 protected:

@@ -1,6 +1,8 @@
+#pragma once
 #include <SFML/Graphics.hpp>
 #include "object.hpp"
-#pragma once
+
+typedef std::vector<sf::Vertex> vertexVector;
 
 class Game {
 public:
@@ -11,4 +13,5 @@ public:
 
     static sf::Vector2f normalize(sf::Vector2f);
     static void setWindowInstance(sf::RenderWindow&);
+    static vertexVector getAllUniquePoints();
 };

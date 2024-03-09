@@ -1,5 +1,7 @@
 #include <iostream>
 #include "headers/object.hpp"
+#include "headers/game.hpp"
+#include "headers/line.hpp"
 
 Object::Object(sf::Vector2f size) : size(size), position(0.f, 0.f), vertices(new sf::Vertex[5]), color(sf::Color::White) {
     this->initVertices();
@@ -61,11 +63,20 @@ const sf::Vector2f Object::getSize() const {
     return size;
 }
 
-std::vector<sf::Vertex> Object::getAllVertices() {
+vertexVector Object::getAllVertices() {
     std::vector<sf::Vertex> vect_vertices;
     for (int i = 0; i < 4; i++)
         vect_vertices.push_back(this->vertices[i]);
     return vect_vertices;
+}
+
+std::vector<Line> Object::getAllSegments() {
+    return std::vector<Line>{
+        Line{ vertices[0], vertices[1] },
+        Line{ vertices[1], vertices[2] },
+        Line{ vertices[2], vertices[3] },
+        Line{ vertices[4], vertices[0] }
+    };
 }
 
 sf::FloatRect Object::getGlobalBounds() {

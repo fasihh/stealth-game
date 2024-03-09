@@ -1,6 +1,6 @@
+#pragma once
 #include <SFML/Graphics.hpp>
 #include "player.hpp"
-#pragma once
 
 class Detection {
 private:

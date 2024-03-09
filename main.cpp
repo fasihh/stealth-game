@@ -8,6 +8,10 @@
 
 sf::RenderWindow window(sf::VideoMode(800, 600), "SFML", sf::Style::Default, sf::ContextSettings(0, 0, 8));
 
+// void display(std::vector<sf::Vertex> vertices) {
+//     for (sf::Vertex vertex : vertices)
+//         std::cout << "{ " << vertex.position.x << ", " << vertex.position.y << " }\n";
+// }
 
 int main() {
     window.setFramerateLimit(60);
@@ -62,6 +66,7 @@ int main() {
         enemy.update();
         
         enemy.draw(window);
+        window.draw(sf::Sprite(enemy.lightTexture.getTexture()), &enemy.lightShader);
         player.draw(window);
         window.draw(vx);
         window.draw(vy);

@@ -1,7 +1,7 @@
+#pragma once
 #include <SFML/Graphics.hpp>
 #include "entity.hpp"
 #include "object.hpp"
-#pragma once
 
 class Player : public Entity {
 protected:

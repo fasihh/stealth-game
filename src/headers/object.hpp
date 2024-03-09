@@ -1,5 +1,6 @@
-#include <SFML/Graphics.hpp>
 #pragma once
+#include <SFML/Graphics.hpp>
+#include "line.hpp"
 
 class Object : public sf::Drawable {
 private:
@@ -28,6 +29,7 @@ public:
     const sf::Vector2f getSize() const;
 
     std::vector<sf::Vertex> getAllVertices();
+    std::vector<Line> getAllSegments();
 
     sf::FloatRect getGlobalBounds();
 
