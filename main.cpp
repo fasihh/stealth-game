@@ -10,9 +10,10 @@ sf::RenderWindow window(sf::VideoMode(800, 600), "SFML", sf::Style::Default, sf:
 int main() {
     window.setFramerateLimit(60);
 
-    Object object(20.f, 20.f);
+    Object object(200.f, 200.f);
     object.setPosition(200.f, 200.f);
-    
+    object.setColor(sf::Color::Red);
+
     Player player(
         20.f,
         sf::Color::Green

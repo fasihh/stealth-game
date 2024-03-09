@@ -3,13 +3,15 @@
 
 class Object : public sf::Drawable {
 private:
-    sf::VertexArray vertices;
+    sf::Vertex *vertices;
     sf::Vector2f size;
     sf::Vector2f position;
     sf::Color color;
 
     virtual void draw(sf::RenderTarget&, sf::RenderStates) const;
 
+    void translatePosition();
+    void setAllVertexColor();
     void initVertices();
 public:
     Object(sf::Vector2f);
